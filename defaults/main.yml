@@ -1,0 +1,9 @@
+---
+# defaults file for juju4.xrdp
+
+xrdp_startwm: 'lxde'
+# xrdp_startwm: 'xfce'
+# xrdp_startwm: 'gnome'
+# xrdp_startwm: 'exec /bin/sh /etc/X11/Xsession'  # whatever custom value
+
+xrdp_enablesyslog: false

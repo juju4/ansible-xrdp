@@ -1,0 +1,5 @@
+---
+# handlers file for juju4.xrdp
+
+- name: restart xrdp
+  service: name=xrdp state=restarted
