@@ -4,11 +4,13 @@
   hosts: xrdp
   gather_facts: false
   tasks:
-    - name: Check if needed packages are installed
-      command: "dpkg-query -l {{ item }}"
-      changed_when: false
-      with_items:
-        - xrdp
+    - name: Gather package facts
+      package_facts:
+        manager: auto
+    - name: Validate that needed packages are present
+      assert:
+        that: ansible_facts.packages['xrdp']
+
     - name: Ensure xrdp.ini file is present
       stat:
         path: /etc/xrdp/xrdp.ini
