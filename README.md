@@ -66,4 +66,3 @@ $ MOLECULE_DISTRO=ubuntu:20.04 molecule test --destroy=never
 ## License
 
 BSD 2-clause
-
