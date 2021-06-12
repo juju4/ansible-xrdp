@@ -16,6 +16,11 @@
     replace: '^auth      [success=1 default=ignore]      pam_unix.so'
     mode: '0644'
 
+- name: Ensure policykit-1 is present
+  package:
+    name: policykit-1
+    state: present
+
 # https://c-nergy.be/blog/?p=12073
 - name: fix freedesktop color managed device issue
   copy:
