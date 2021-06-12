@@ -6,24 +6,6 @@
     name: xrdp
     state: present
 
-# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=931899#17
-# https://askubuntu.com/questions/1239503/ubuntu-20-04-and-20-10-etc-securetty-no-such-file-or-directory
-# https://forums.linuxmint.com/viewtopic.php?t=335853
-- name: Remove error log about /etc/securetty
-  replace:
-    dest: /etc/pam.d/common-auth
-    regexp: '^auth      [success=1 default=ignore]      pam_unix.so nullok_secure'
-    replace: '^auth      [success=1 default=ignore]      pam_unix.so'
-    mode: '0644'
-  when: ansible_os_family == 'Debian'
-
-- name: adding xrdp user to group ssl-cert
-  user:
-    name: xrdp
-    groups: ssl-cert
-    append: yes
-  when: ansible_os_family == 'Debian'
-
 - name: setup xrdp.ini
   template:
     src: xrdp.ini.j2
@@ -41,10 +23,3 @@
     backup: yes
   notify:
     - restart xrdp
-
-# https://c-nergy.be/blog/?p=12073
-- name: fix freedesktop color managed device issue
-  copy:
-    src: 02-allow-colord.conf
-    dest: /etc/polkit-1/localauthority.conf.d/02-allow-colord.conf
-    mode: '0644'
