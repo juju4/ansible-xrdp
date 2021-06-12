@@ -6,6 +6,13 @@
     name: xrdp
     state: present
 
+- name: adding xrdp user to group ssl-cert
+  user:
+    name: xrdp
+    groups: ssl-cert
+    append: yes
+  when: ansible_os_family == 'Debian'
+
 - name: setup xrdp.ini
   template:
     src: xrdp.ini.j2

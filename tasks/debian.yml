@@ -16,12 +16,6 @@
     replace: '^auth      [success=1 default=ignore]      pam_unix.so'
     mode: '0644'
 
-- name: adding xrdp user to group ssl-cert
-  user:
-    name: xrdp
-    groups: ssl-cert
-    append: yes
-
 # https://c-nergy.be/blog/?p=12073
 - name: fix freedesktop color managed device issue
   copy:
