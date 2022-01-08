@@ -63,6 +63,11 @@ $ MOLECULE_DISTRO=ubuntu:20.04 molecule test --destroy=never
   * https://linoxide.com/xrdp-connect-ubuntu-linux-remote-desktop-via-rdp-from-windows/
   * https://peteris.rocks/blog/remote-desktop-and-vnc-on-ubuntu-server/
 
+* on xrdp speed, see
+https://github.com/neutrinolabs/xrdp/issues/386
+https://github.com/neutrinolabs/xrdp/issues/501
+https://askubuntu.com/questions/1323601/xrdp-is-quite-slow
+
 ## License
 
 BSD 2-clause

@@ -1,4 +1,6 @@
 {{ ansible_managed | comment(decoration='; ') }}
+
+; https://www.systutorials.com/docs/linux/man/5-xrdp.ini/
 [Globals]
 ; xrdp.ini file version number
 ini_version=1
@@ -73,7 +75,8 @@ bitmap_cache=true
 bitmap_compression=true
 bulk_compression=true
 #hidelogwindow=true
-max_bpp=32
+; Limit the color depth by specifying the maximum number of bits per pixel. [8|15|16|24|32]
+max_bpp=16
 new_cursors=true
 ; fastpath - can be 'input', 'output', 'both', 'none'
 use_fastpath=both
