@@ -2,19 +2,19 @@
 # https://help.ubuntu.com/community/xrdp
 
 - name: Ensure xrdp package is present
-  package:
+  ansible.builtin.package:
     name: xrdp
     state: present
 
 - name: adding xrdp user to group ssl-cert
-  user:
+  ansible.builtin.user:
     name: xrdp
     groups: ssl-cert
     append: yes
   when: ansible_os_family == 'Debian'
 
 - name: setup xrdp.ini
-  template:
+  ansible.builtin.template:
     src: xrdp.ini.j2
     dest: /etc/xrdp/xrdp.ini
     mode: '0644'
@@ -23,7 +23,7 @@
     - restart xrdp
 
 - name: setup xrdp window manager
-  template:
+  ansible.builtin.template:
     src: startwm.sh.j2
     dest: /etc/xrdp/startwm.sh
     mode: '0755'

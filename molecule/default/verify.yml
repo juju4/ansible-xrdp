@@ -5,29 +5,29 @@
   gather_facts: true
   tasks:
     - name: Debug | ansible_virtualization_type
-      debug: var=ansible_virtualization_type verbosity=1
+      ansible.builtin.debug: var=ansible_virtualization_type verbosity=1
     - name: Gather package facts
-      package_facts:
+      ansible.builtin.package_facts:
         manager: auto
     - name: Validate that needed packages are present
-      assert:
+      ansible.builtin.assert:
         that: ansible_facts.packages['xrdp']
 
     - name: Ensure xrdp.ini file is present
-      stat:
+      ansible.builtin.stat:
         path: /etc/xrdp/xrdp.ini
       register: cfg
     - name: Validate config present
-      assert:
+      ansible.builtin.assert:
         that: cfg.stat.exists and cfg.stat.size != 0
 
     - name: Ensure process is running
-      command: pgrep -u xrdp xrdp
+      ansible.builtin.command: pgrep -u xrdp xrdp
       register: ps
       changed_when: false
       failed_when: false
     - name: Validate ps output
-      assert:
+      ansible.builtin.assert:
         that: ps.stdout
       when: >
         not (ansible_virtualization_type is defined and
@@ -35,7 +35,7 @@
           )
 
     - name: Ensure ports are listening
-      wait_for:
+      ansible.builtin.wait_for:
         host: "{{ item.h }}"
         port: "{{ item.p }}"
         timeout: 10

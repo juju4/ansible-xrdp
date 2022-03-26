@@ -1,7 +1,7 @@
 ---
 
 - name: Ubuntu | add universe repository
-  apt_repository:
+  ansible.builtin.apt_repository:
     repo: "deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }} universe"
     state: present
   when: ansible_distribution == 'Ubuntu'
@@ -10,20 +10,20 @@
 # https://askubuntu.com/questions/1239503/ubuntu-20-04-and-20-10-etc-securetty-no-such-file-or-directory
 # https://forums.linuxmint.com/viewtopic.php?t=335853
 - name: Remove error log about /etc/securetty
-  replace:
+  ansible.builtin.replace:
     dest: /etc/pam.d/common-auth
     regexp: '^auth      [success=1 default=ignore]      pam_unix.so nullok_secure'
     replace: '^auth      [success=1 default=ignore]      pam_unix.so'
     mode: '0644'
 
 - name: Ensure policykit-1 is present
-  package:
+  ansible.builtin.package:
     name: policykit-1
     state: present
 
 # https://c-nergy.be/blog/?p=12073
 - name: fix freedesktop color managed device issue
-  copy:
+  ansible.builtin.copy:
     src: 02-allow-colord.conf
     dest: /etc/polkit-1/localauthority.conf.d/02-allow-colord.conf
     mode: '0644'
