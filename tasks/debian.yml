@@ -22,7 +22,7 @@
     state: present
 
 # https://c-nergy.be/blog/?p=12073
-- name: fix freedesktop color managed device issue
+- name: Fix freedesktop color managed device issue
   ansible.builtin.copy:
     src: 02-allow-colord.conf
     dest: /etc/polkit-1/localauthority.conf.d/02-allow-colord.conf

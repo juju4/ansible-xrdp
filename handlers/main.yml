@@ -1,7 +1,7 @@
 ---
 # handlers file for juju4.xrdp
 
-- name: restart xrdp
+- name: Restart xrdp
   ansible.builtin.service: name=xrdp state=restarted
   when: >
     not (ansible_virtualization_type is defined and

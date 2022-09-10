@@ -6,27 +6,27 @@
     name: xrdp
     state: present
 
-- name: adding xrdp user to group ssl-cert
+- name: Adding xrdp user to group ssl-cert
   ansible.builtin.user:
     name: xrdp
     groups: ssl-cert
     append: yes
   when: ansible_os_family == 'Debian'
 
-- name: setup xrdp.ini
+- name: Setup xrdp.ini
   ansible.builtin.template:
     src: xrdp.ini.j2
     dest: /etc/xrdp/xrdp.ini
     mode: '0644'
     backup: yes
   notify:
-    - restart xrdp
+    - Restart xrdp
 
-- name: setup xrdp window manager
+- name: Setup xrdp window manager
   ansible.builtin.template:
     src: startwm.sh.j2
     dest: /etc/xrdp/startwm.sh
     mode: '0755'
     backup: yes
   notify:
-    - restart xrdp
+    - Restart xrdp
