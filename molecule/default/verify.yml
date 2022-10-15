@@ -6,7 +6,8 @@
   tasks:
     - name: Debug | ansible_virtualization_type
       ansible.builtin.debug:
-        var: ansible_virtualization_type verbosity=1
+        var: ansible_virtualization_type
+        verbosity: 1
     - name: Gather package facts
       ansible.builtin.package_facts:
         manager: auto
