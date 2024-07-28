@@ -6,6 +6,12 @@
     state: present
   when: ansible_distribution == 'Ubuntu'
 
+- name: Debian | update apt cache
+  ansible.builtin.apt:
+    update_cache: yes
+    cache_valid_time: "{{ xrdp_apt_cache_valid | default('3600') }}"
+  when: ansible_os_family == 'Debian'
+
 # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=931899#17
 # https://askubuntu.com/questions/1239503/ubuntu-20-04-and-20-10-etc-securetty-no-such-file-or-directory
 # https://forums.linuxmint.com/viewtopic.php?t=335853
