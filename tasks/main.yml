@@ -2,7 +2,7 @@
 
 - name: Import debian
   ansible.builtin.import_tasks: debian.yml
-  when: ansible_os_family == "Debian"
+  when: ansible_facts['os_family'] == "Debian"
 
 - name: Import xrdp
   ansible.builtin.import_tasks: xrdp.yml

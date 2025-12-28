@@ -11,7 +11,7 @@
     name: xrdp
     groups: ssl-cert
     append: yes
-  when: ansible_os_family == 'Debian'
+  when: ansible_facts['os_family'] == 'Debian'
 
 - name: Setup xrdp.ini
   ansible.builtin.template:
