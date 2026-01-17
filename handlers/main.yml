@@ -5,7 +5,5 @@
   ansible.builtin.service:
     name: xrdp
     state: restarted
-  when: >
-    not (ansible_virtualization_type is defined and
-          (ansible_virtualization_type == "docker" or ansible_virtualization_type == "containerd")
-        )
+  when:
+    - not is_container | bool

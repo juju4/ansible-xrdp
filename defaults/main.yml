@@ -7,3 +7,5 @@ xrdp_startwm: 'lxde'
 # xrdp_startwm: 'exec /bin/sh /etc/X11/Xsession'  # whatever custom value
 
 xrdp_enablesyslog: false
+
+is_container: false
