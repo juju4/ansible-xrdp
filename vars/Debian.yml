@@ -1,0 +1,4 @@
+---
+
+xrdp_pol_pkgs:
+  - policykit-1

@@ -1,5 +1,18 @@
 ---
 
+- name: Include variables
+  ansible.builtin.include_vars: "{{ lookup('ansible.builtin.first_found', params) }}"
+  vars:
+    params:
+      files:
+        - "{{ ansible_facts['distribution'] }}-{{ ansible_facts['distribution_version'] }}.yml"
+        - "{{ ansible_facts['distribution'] }}-{{ ansible_facts['distribution_major_version'] }}.yml"
+        - "{{ ansible_facts['distribution'] }}.yml"
+        - "{{ ansible_facts['os_family'] }}-{{ ansible_facts['distribution_major_version'] }}.yml"
+        - "{{ ansible_facts['os_family'] }}.yml"
+      paths:
+        - 'vars'
+
 - name: Import debian
   ansible.builtin.import_tasks: debian.yml
   when: ansible_facts['os_family'] == "Debian"

@@ -24,7 +24,7 @@
 
 - name: Ensure policykit-1 is present
   ansible.builtin.package:
-    name: policykit-1
+    name: "{{ xrdp_pol_pkgs }}"
     state: present
 
 # https://c-nergy.be/blog/?p=12073
