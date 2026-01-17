@@ -70,6 +70,8 @@ https://askubuntu.com/questions/1323601/xrdp-is-quite-slow
 
 * RHEL 10 has removed xrdp package and is not supported
 
+* Debian Trixie (and likely next Ubuntu) has changed local policy rules syntax. See [Polkitd (Policy Kit Daemon) in Trixie ... getting rid of "Authentication is required to create a color profile", May 2025](https://daniel-lange.com/archives/193-Polkitd-Policy-Kit-Daemon-in-Trixie-...-getting-rid-of-Authentication-is-required-to-create-a-color-profile.html)
+
 ## License
 
 BSD 2-clause

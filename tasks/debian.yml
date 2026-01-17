@@ -33,3 +33,15 @@
     src: 02-allow-colord.conf
     dest: /etc/polkit-1/localauthority.conf.d/02-allow-colord.conf
     mode: '0644'
+  when:
+    - ((ansible_facts['distribution'] == 'Debian' and ansible_facts['distribution_major_version'] | int < 13) or
+       (ansible_facts['distribution'] == 'Ubuntu' and ansible_facts['distribution_major_version'] | int < 26))
+
+- name: Polkitd 126+ | Fix freedesktop color managed device issue
+  ansible.builtin.copy:
+    src: 50-color-manager.rules
+    dest: /etc/polkit-1/rules.d/50-color-manager.rules
+    mode: '0644'
+  when:
+    - ((ansible_facts['distribution'] == 'Debian' and ansible_facts['distribution_major_version'] | int >= 13) or
+       (ansible_facts['distribution'] == 'Ubuntu' and ansible_facts['distribution_major_version'] | int >= 26))

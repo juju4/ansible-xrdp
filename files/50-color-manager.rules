@@ -1,0 +1,5 @@
+polkit.addRule(function(action, subject) {
+    if (action.id.startsWith("org.freedesktop.color-manager.") && (subject.isInGroup("users") || (subject.user == "root"))) {
+        return polkit.Result.YES;
+    }
+});
