@@ -68,6 +68,8 @@ https://github.com/neutrinolabs/xrdp/issues/386
 https://github.com/neutrinolabs/xrdp/issues/501
 https://askubuntu.com/questions/1323601/xrdp-is-quite-slow
 
+* RHEL 10 has removed xrdp package and is not supported
+
 ## License
 
 BSD 2-clause
