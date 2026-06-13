@@ -1,9 +1,15 @@
 ---
 
 - name: Ubuntu | add universe repository
-  ansible.builtin.apt_repository:
-    repo: "deb http://archive.ubuntu.com/ubuntu {{ ansible_facts['distribution_release'] }} universe"
-    state: present
+  ansible.builtin.deb822_repository:
+    name: universe
+    types: deb
+    uris: "http://archive.ubuntu.com/ubuntu"
+    suites: "{{ ansible_facts['distribution_release'] }}"
+    components:
+      - main
+      - universe
+    signed_by: /usr/share/keyrings/ubuntu-archive-keyring.gpg
   when: ansible_facts['distribution'] == 'Ubuntu'
 
 - name: Debian | update apt cache
