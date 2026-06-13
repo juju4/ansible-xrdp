@@ -1,5 +1,10 @@
 ---
 
+- name: Debian | Ensure python3-debian is present
+  ansible.builtin.apt:
+    package: python3-debian
+    state: present
+
 - name: Ubuntu | add universe repository
   ansible.builtin.deb822_repository:
     name: universe
